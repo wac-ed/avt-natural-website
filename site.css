@@ -423,3 +423,7 @@ a.wcard,.wcard{color:inherit}
 .flow-pin .flow-text{min-height:0;padding-bottom:18px}
 .flow-pin .formats{margin-top:clamp(24px,4vh,48px)}
 }
+/* menus open on hover (or keyboard focus) only, and close once a page loads */
+.has-menu:focus-within:not(:hover) .mega{opacity:0;visibility:hidden}
+.has-menu:has(:focus-visible) .mega{opacity:1;visibility:visible;transform:none}
+.hdr.menu-off .has-menu .mega{opacity:0!important;visibility:hidden!important;transition:none}
