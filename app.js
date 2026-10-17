@@ -489,7 +489,7 @@ d.addEventListener('click',function(e){
     if(b!==undefined){e.preventDefault();openDrawer('brochure',b);return;}
     if(q!==undefined){try{sessionStorage.setItem('avt-q',q);}catch(x){}}
     var h=a.getAttribute('href').slice(1);
-    if(a.hasAttribute('data-scroll')||(h&&d.getElementById(h)&&!resolveSafe(h))){e.preventDefault();var el=d.getElementById(h);if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth'});return;}
+    if(a.hasAttribute('data-scroll')||(h&&d.getElementById(h)&&!resolveSafe(h))){e.preventDefault();var el=d.getElementById(h);if(el){var hb=d.querySelector('.hdr'),off=hb?80:0;window.scrollTo({top:el.getBoundingClientRect().top+scrollY-off,behavior:reduce?'auto':'smooth'});}return;}
     if('#'+h===location.hash||(h==='home'&&!location.hash)){e.preventDefault();window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});}
     d.body.classList.remove('menu-open');
   }
