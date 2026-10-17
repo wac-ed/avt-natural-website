@@ -117,7 +117,7 @@ AVT.cases = {
     stats:[["3–4 yrs","Seed lines bred ahead of each season"],["0","Agents between AVT and its farmers"],["3","Variants: conventional, organic, deodorised"]],
     stages:["Seed","Farmer","Zones","Plant"],
     model:"The same model can be replicated for other botanicals, and partners can own a value chain with AVT from the growing stage."},
-  "colourless-capsicum":{title:"Colourless capsicum oleoresin",tag:"Innovation · Food",img:"img/chilli.jpg",ind:"food",
+  "colourless-capsicum":{title:"Colourless capsicum oleoresin",tag:"Innovation · Food",img:"img/capsicum.jpg",ind:"food",
     sum:"Full pungency with virtually no colour, for products where heat must stay invisible.",
     challenge:"Capsicum oleoresin brings heat, but it also brings red. For clear seasoning oils, light-coloured sauces and topical balms, that colour was a problem, and buyers had to choose between pungency and appearance.",
     did:["Our R&D team developed a process that keeps the capsaicinoids and removes the colour, independent of the raw material lot.","The oleoresin is also produced to contaminant limits that meet EU and Korean requirements."],
