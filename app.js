@@ -1,6 +1,11 @@
 /* AVT Natural site: hash router, shared components and every page. Content from the IA doc, sitemap v3.0 and the Drive sources. */
 (function(){
 var d=document, root=d.documentElement; root.classList.add('js');
+/* a refresh always opens at the top */
+try{history.scrollRestoration='manual';}catch(e){}
+window.scrollTo({top:0,behavior:'instant'});
+window.addEventListener('load',function(){window.scrollTo({top:0,behavior:'instant'});});
+window.addEventListener('pageshow',function(e){if(e.persisted)window.scrollTo({top:0,behavior:'instant'});});
 var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var A=window.AVT;
 
