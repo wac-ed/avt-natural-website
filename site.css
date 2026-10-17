@@ -434,14 +434,3 @@ a.wcard,.wcard{color:inherit}
 .hdr.solid{padding-top:8px}
 .mega{top:calc(env(safe-area-inset-top,0px) + 80px)}
 .hdr:not(.solid) .mega{top:calc(env(safe-area-inset-top,0px) + 104px)}
-/* By Application fits one screen on desktop, so the hero arrow lands on the whole section */
-@media (min-width:1000px){
-#industries{min-height:calc(100vh - 80px);padding-block:clamp(28px,4vh,56px);display:flex;align-items:center}
-#industries>.wrap{width:100%}
-#industries .head{margin-bottom:clamp(16px,3vh,40px);align-items:end}
-#industries h2{font-size:min(4.2vw,5.6vh,64px)}
-#industries .ind-art{width:100%;max-width:min(420px,28vh)}
-#industries .ind-card{gap:10px}
-#industries .soon{margin-top:clamp(16px,2.5vh,32px)}
-}
-@media (min-width:1000px) and (max-height:800px){#industries .ind-art{max-width:24vh}#industries .head{margin-bottom:12px}}
