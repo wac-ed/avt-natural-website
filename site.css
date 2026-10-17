@@ -405,3 +405,21 @@ a.wcard,.wcard{color:inherit}
 .lm-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:36px}
 .lm-count{font:400 11px/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 [hidden]{display:none!important}
+/* seed to specification: whole section pins while the four steps play */
+@media (min-width:1000px){
+.flow{padding-block:0}
+.flow-track{height:calc(100vh + 240vh)}
+.flow-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center;padding-block:112px 28px;overflow:hidden}
+.flow-pin>.wrap{width:100%}
+.flow-pin .head{margin-bottom:clamp(24px,4vh,48px)}
+.flow-pin .flow-grid{align-items:center}
+.flow-pin .flow-card{position:relative;top:auto;gap:20px}
+.flow-pin .word{font-size:min(7.5vw,8.6vh,120px)}
+.flow-pin .words{gap:min(12px,1vh)}
+.flow-pin .head{gap:20px}
+.flow-pin .head>div{gap:16px!important}
+.flow-pin h2{font-size:min(5.2vw,6.2vh,80px)}
+.flow-pin .orb{max-width:min(400px,34vh)}
+.flow-pin .flow-text{min-height:0;padding-bottom:18px}
+.flow-pin .formats{margin-top:clamp(24px,4vh,48px)}
+}

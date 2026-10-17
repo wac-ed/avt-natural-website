@@ -461,8 +461,10 @@ function initHome(){
   var steps=[['Grow','Seed research, contract farming and agronomy support across multiple agro-climatic zones.'],['Extract','Continuous extraction with low heat contact, and tea decaffeination that is entirely solvent-free.'],['Enrich','Purification and standardisation to a guaranteed active content, every batch.'],['Deliver','Formatted for your process and shipped with full documentation to more than 40 countries.']];
   var words=[].slice.call(app.querySelectorAll('.word')),imgs=[].slice.call(app.querySelectorAll('#orb img')),ft=d.getElementById('flowText'),cur=0,manual=0,wide=window.matchMedia('(min-width:1000px)');
   function setStep(i){if(i===cur)return;cur=i;words.forEach(function(w,k){w.classList.toggle('on',k===i);});imgs.forEach(function(m,k){m.classList.toggle('on',k===i);});ft.innerHTML='<i class="dot-s"></i><h3>'+steps[i][0]+'</h3><p>'+steps[i][1]+'</p>';ft.classList.remove('swap');void ft.offsetWidth;ft.classList.add('swap');}
-  words.forEach(function(w,k){w.addEventListener('click',function(){setStep(k);manual=Date.now();});});
-  scrollers.push(function(){if(!wide.matches||Date.now()-manual<1500)return;var mid=innerHeight*0.5,best=cur,bd=1e9;words.forEach(function(w,k){var r=w.getBoundingClientRect(),c=r.top+r.height/2,dd=Math.abs(c-mid);if(dd<bd){bd=dd;best=k;}});var g=d.getElementById('flowGrid').getBoundingClientRect();if(g.top<innerHeight&&g.bottom>0)setStep(best);});
+  var track=d.getElementById('flowTrack');
+  function span(){return track.offsetHeight-innerHeight;}
+  words.forEach(function(w,k){w.addEventListener('click',function(){if(!wide.matches){setStep(k);return;}var top=track.getBoundingClientRect().top+scrollY;scrollTo({top:top+span()*(k+.5)/words.length,behavior:'smooth'});});});
+  scrollers.push(function(){if(!wide.matches)return;var r=track.getBoundingClientRect(),sp=span();if(r.bottom<0||r.top>innerHeight||sp<=0)return;var pr=Math.min(.999,Math.max(0,-r.top/sp));setStep(Math.floor(pr*words.length));});
   var bub=d.getElementById('bubbles');if(bub&&!reduce)bub.addEventListener('pointermove',function(e){var r=bub.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;bub.querySelectorAll('.bub').forEach(function(b,k){var f=(k+1)*8;b.style.transform='translate('+(x*f)+'px,'+(y*f)+'px)';});});
   var tr=d.getElementById('track');if(tr&&!tr.dataset.dup){tr.dataset.dup=1;tr.innerHTML+=tr.innerHTML;[].slice.call(tr.children).slice(tr.children.length/2).forEach(function(n){n.setAttribute('aria-hidden','true');});}
 }
