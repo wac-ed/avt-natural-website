@@ -463,10 +463,10 @@ a.wcard,.wcard{color:inherit}
 .cs-stat b{font:400 clamp(26px,2.6vw,40px)/1 var(--f-display);color:var(--brand-700);letter-spacing:-.02em;white-space:nowrap}
 .cs-stat span{font-size:13px;line-height:1.4;color:var(--ink-soft)}
 .cs-stats.sm .cs-stat b{font-size:clamp(22px,2vw,28px)}
-.cs-stats.dark{border-color:rgba(255,255,255,.16)}
-.cs-stats.dark .cs-stat+.cs-stat{border-color:rgba(255,255,255,.16)}
-.cs-stats.dark .cs-stat b{color:var(--accent)}
-.cs-stats.dark .cs-stat span{color:#C9DDD2}
+.cs-stats.inv{border-color:rgba(255,255,255,.16)}
+.cs-stats.inv .cs-stat+.cs-stat{border-color:rgba(255,255,255,.16)}
+.cs-stats.inv .cs-stat b{color:var(--accent)}
+.cs-stats.inv .cs-stat span{color:#C9DDD2}
 .cs-stats.big{border-top:0}
 .cs-stats.big .cs-stat b{font-size:clamp(36px,4.4vw,64px)}
 .cs-stats.big .cs-stat{padding-top:0}
@@ -521,4 +521,4 @@ a.wcard,.wcard{color:inherit}
 .cs-next .eyebrow{color:var(--accent)}
 .cs-next h3{font:400 clamp(34px,4vw,60px)/1 var(--f-display);letter-spacing:-.02em}
 .cs-next .link{color:#fff}
-@media (max-width:560px){.cs-stats{grid-template-columns:1fr}.cs-stat+.cs-stat{padding-left:0;border-left:0;border-top:1px solid var(--line)}.cs-stats.dark .cs-stat+.cs-stat{border-color:rgba(255,255,255,.16)}}
+@media (max-width:560px){.cs-stats{grid-template-columns:1fr}.cs-stat+.cs-stat{padding-left:0;border-left:0;border-top:1px solid var(--line)}.cs-stats.inv .cs-stat+.cs-stat{border-color:rgba(255,255,255,.16)}}
