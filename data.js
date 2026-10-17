@@ -125,7 +125,7 @@ AVT.cases = {
     products:["colourless-capsicum","capsicum-eu","capsicum-oleoresin"],
     stats:[["<5 CU","Colour, virtually invisible"],["1.5M SHU","Pungency, at the top of the range"],["EU · Korea","Contaminant limits met"]],
     stages:["Develop","Comply"]},
-  "deep-hue-paprika":{title:"Deeper red-hue paprika",tag:"Process · Food",img:"img/turmeric.jpg",ind:"food",
+  "deep-hue-paprika":{title:"Deeper red-hue paprika",tag:"Process · Food",img:"img/paprika.jpg",ind:"food",
     sum:"A deeper red delivered by process, not by hunting for the right raw material.",
     challenge:"The hue a paprika oleoresin gives a finished product depends heavily on the crop, so a deeper red usually meant paying for scarce raw material and accepting variation between lots.",
     did:["We developed a process that lifts the absorbance ratio of paprika oleoresin to 1.0 or more, giving a deeper red hue in the end product.","The same process thinking produced a rare paprika yellow and a heat and light stable paprika stabilised with natural antioxidants."],
