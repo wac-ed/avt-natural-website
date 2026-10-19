@@ -176,9 +176,10 @@ P['personal-care']=function(){return hero({title:'From farm|to skin.',eyebrow:'S
 
 /* products */
 P.catTop=function(fam){var F=fam?(A.collections[fam]||A.families[fam]):null,G=F||A.allProducts;
- var h=hero({title:G.title||G.name,eyebrow:'Products <b>·</b> '+(G.kind||'Ingredient family'),lede:G.line,img:G.img,crumbs:F?[['Products','products'],[F.name]]:[['Products']],short:true});
- var story=band('white',split({img:G.img,eb:G.kind==='Collection'?'The story behind the range':F?'The story behind the family':'The catalogue',title:(F?F.name+' at AVT.':'Field to formulation.'),body:'<p>'+G.story+'</p>',btns:chips(G.chips)}))+'<section class="band white tight" style="padding-top:0"><div class="wrap">'+origin(G.origin,G.originText)+'</div></section>';
+ var All=A.allProducts,h=hero({title:All.title||All.name,eyebrow:'Products <b>·</b> '+(All.kind||'Ingredient family'),lede:All.line,img:All.img,crumbs:[['Products']],short:true});
+ var story=band('white',split({img:All.img,eb:'The catalogue',title:'Field to formulation.',body:'<p>'+All.story+'</p>',btns:chips(All.chips)}))+'<div id="catOrigin" class="cat-top-swap">'+P.catOrigin(fam)+'</div>';
  return h+story;};
+P.catOrigin=function(fam){var G=fam?(A.collections[fam]||A.families[fam]):A.allProducts;return '<section class="band white tight" style="padding-top:0"><div class="wrap">'+origin(G.origin,G.originText)+'</div></section>';};
 P.catProof=function(fam){var G=fam?(A.collections[fam]||A.families[fam]):A.allProducts;return G.proof?proof(G.proof,'Related proof',G.proofTitle):'';};
 P.products=function(fam){var F=fam?(A.collections[fam]||A.families[fam]):null,G=F||A.allProducts;
  var tabs='<div class="ftabs" role="group" aria-label="Ingredient family"><button class="fopt" data-fam="" aria-pressed="'+(!fam)+'">All products</button>'+Object.keys(A.collections).concat(Object.keys(A.families)).map(function(k){var g=A.collections[k]||A.families[k];return '<button class="fopt'+(A.collections[k]?' coll':'')+'" data-fam="'+k+'" aria-pressed="'+(fam===k)+'">'+g.name+'</button>';}).join('')+'</div>';
@@ -424,9 +425,9 @@ function initCatalogue(fam){
     grid.innerHTML=l.length?vis.map(prodCard).join(''):'<div class="empty" style="grid-column:1/-1"><h3>No direct match.</h3><p>We may still make it, or develop it with you.</p>'+btn('Talk to an Expert','contact')+'</div>';
   }
   app.querySelector('.ftabs').addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(b.parentNode,b);st.fam=b.dataset.fam;draw();swapTop(st.fam);});
-  function swapTop(f){var top=d.getElementById('catTop'),pf=d.getElementById('catProof');try{history.replaceState(null,'','#products'+(f?'.'+f:''));}catch(x){}
+  function swapTop(f){var top=d.getElementById('catOrigin'),pf=d.getElementById('catProof');try{history.replaceState(null,'','#products'+(f?'.'+f:''));}catch(x){}
     var G=f?(A.collections[f]||A.families[f]):null;d.title=(G?G.name:'All products')+' · AVT Natural';
-    var put=function(){top.innerHTML=P.catTop(f);pf.innerHTML=P.catProof(f);top.classList.remove('out');pf.classList.remove('out');onScroll();};
+    var put=function(){top.innerHTML=P.catOrigin(f);pf.innerHTML=P.catProof(f);top.classList.remove('out');pf.classList.remove('out');onScroll();};
     if(reduce){put();return;}top.classList.add('out');pf.classList.add('out');clearTimeout(top._t);top._t=setTimeout(put,320);}
   app.querySelector('.filters').addEventListener('click',function(e){var b=e.target.closest('.fopt[data-k]');if(!b)return;var k=b.dataset.k,v=b.dataset.v,arr=st[k],i=arr.indexOf(v);if(i>-1)arr.splice(i,1);else arr.push(v);b.setAttribute('aria-pressed',String(i<0));draw();});
   d.getElementById('clearF').addEventListener('click',function(){['ind','fmt','type','org'].forEach(function(k){st[k]=[];});st.q='';d.getElementById('cq').value='';app.querySelectorAll('.filters .fopt').forEach(function(b){b.setAttribute('aria-pressed','false');});draw();});
