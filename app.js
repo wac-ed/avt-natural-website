@@ -367,6 +367,8 @@ function go(){var hd=d.querySelector('.hdr');if(hd){hd.classList.add('menu-off')
   if(ph){var nat=ph.getBoundingClientRect().bottom+scrollY;window.scrollTo({top:Math.max(0,nat-rs),behavior:'instant'});}else window.scrollTo(0,0);
   d.body.classList.remove('menu-open');
   initPage(r);
+  /* family picked from the nav: land on its ribbon and the catalogue */
+  if(r.k==='products'&&r.fam&&(A.families[r.fam]||A.collections[r.fam])){var og=d.getElementById('catOrigin');if(og){var y=og.getBoundingClientRect().top+scrollY-(hdr.offsetHeight||80)-48;window.scrollTo({top:Math.max(0,y),behavior:'instant'});}}
 }
 window.addEventListener('hashchange',go);
 
