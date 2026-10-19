@@ -428,7 +428,7 @@ function initCatalogue(fam){
   function swapTop(f){var top=d.getElementById('catOrigin'),pf=d.getElementById('catProof');try{history.replaceState(null,'','#products'+(f?'.'+f:''));}catch(x){}
     var G=f?(A.collections[f]||A.families[f]):null;d.title=(G?G.name:'All products')+' · AVT Natural';
     var put=function(){top.innerHTML=P.catOrigin(f);pf.innerHTML=P.catProof(f);top.classList.remove('out');pf.classList.remove('out');onScroll();};
-    if(reduce){put();return;}top.classList.add('out');pf.classList.add('out');clearTimeout(top._t);top._t=setTimeout(put,320);}
+    if(reduce){put();return;}top.classList.add('out');pf.classList.add('out');clearTimeout(top._t);top._t=setTimeout(put,450);}
   app.querySelector('.filters').addEventListener('click',function(e){var b=e.target.closest('.fopt[data-k]');if(!b)return;var k=b.dataset.k,v=b.dataset.v,arr=st[k],i=arr.indexOf(v);if(i>-1)arr.splice(i,1);else arr.push(v);b.setAttribute('aria-pressed',String(i<0));draw();});
   d.getElementById('clearF').addEventListener('click',function(){['ind','fmt','type','org'].forEach(function(k){st[k]=[];});st.q='';d.getElementById('cq').value='';app.querySelectorAll('.filters .fopt').forEach(function(b){b.setAttribute('aria-pressed','false');});draw();});
   var cq=d.getElementById('cq');cq.addEventListener('input',function(){st.q=cq.value;draw();});
