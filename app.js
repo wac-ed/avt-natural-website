@@ -352,7 +352,7 @@ function resolve(h){
 var app=d.getElementById('app'), hdr=d.getElementById('hdr'), last='home';
 var railSwap=null;
 d.addEventListener('click',function(e){var a=e.target.closest('.rail a');if(a&&a.getAttribute('href')===(location.hash||'#home')){e.preventDefault();e.stopPropagation();return;}if(a&&!e.metaKey&&!e.ctrlKey){var rr=a.closest('.rail').getBoundingClientRect();railSwap=rr.top;}},true);
-function go(){var hd=d.querySelector('.hdr');if(hd){hd.classList.add('menu-off');if(d.activeElement&&d.activeElement.closest&&d.activeElement.closest('.hdr'))d.activeElement.blur();var off=function(e){if(e.target.closest&&e.target.closest('.has-menu'))return;hd.classList.remove('menu-off');d.removeEventListener('pointermove',off);};d.addEventListener('pointermove',off);}
+function go(){var hd=d.querySelector('.hdr');if(hd){hd.classList.add('menu-off');hd.classList.remove('mega-open','mega-swap');hd.querySelectorAll('.has-menu.hold').forEach(function(m){m.classList.remove('hold');});if(d.activeElement&&d.activeElement.closest&&d.activeElement.closest('.hdr'))d.activeElement.blur();var off=function(e){if(e.target.closest&&e.target.closest('.has-menu'))return;hd.classList.remove('menu-off');d.removeEventListener('pointermove',off);};d.addEventListener('pointermove',off);}
   var r=resolve(location.hash);
   if(r===null)return;
   if(r==='anchor'){var el=d.getElementById(location.hash.slice(1));if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth'});return;}
@@ -538,5 +538,14 @@ scrim.addEventListener('click',closeDrawer);d.getElementById('dclose').addEventL
 d.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDrawer();closeSearch();d.body.classList.remove('menu-open');}});
 
 try{d.getElementById('lg').innerHTML=d.querySelector('.hdr .logo g').innerHTML;}catch(e){}
+
+/* mega menus: keep the white panel in place while moving between nav items */
+(function(){if(!hdr)return;var menus=hdr.querySelectorAll('.has-menu'),t;
+  function clear(){menus.forEach(function(m){m.classList.remove('hold');});hdr.classList.remove('mega-open','mega-swap');}
+  menus.forEach(function(m){m.addEventListener('pointerenter',function(){if(hdr.classList.contains('menu-off'))return;clearTimeout(t);var was=hdr.classList.contains('mega-open');menus.forEach(function(o){if(o!==m)o.classList.remove('hold');});m.classList.add('hold');hdr.classList.toggle('mega-swap',was);hdr.classList.add('mega-open');});});
+  hdr.querySelectorAll('.nav > a').forEach(function(a){a.addEventListener('pointerenter',function(){clearTimeout(t);clear();});});
+  hdr.addEventListener('pointerleave',function(){clearTimeout(t);t=setTimeout(clear,160);});
+  hdr.addEventListener('pointerenter',function(){clearTimeout(t);});
+})();
 go();
 })();

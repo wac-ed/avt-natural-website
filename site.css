@@ -546,3 +546,11 @@ a.wcard,.wcard{color:inherit}
 .has-menu:hover .mega,.has-menu:has(:focus-visible) .mega{transition:opacity .22s ease 0s,visibility 0s linear 0s}
 .mega .wrap{transition:transform .35s var(--ease)}
 .has-menu:not(:hover) .mega .wrap{transform:translateY(-6px)}
+/* Mega menu: panel holds while moving between items; only the content swaps */
+.has-menu.hold .mega{opacity:1;visibility:visible;transition:opacity .22s ease 0s,visibility 0s linear 0s}
+.has-menu.hold .mega .wrap{transform:none}
+.hdr.mega-swap .has-menu .mega{transition:none!important;box-shadow:0 30px 60px -30px rgba(12,79,54,.35)}
+.hdr.mega-swap .has-menu.hold .mega .wrap{animation:megaIn .28s ease both}
+.hdr.mega-open .has-menu:not(.hold) .mega{opacity:0!important;visibility:hidden!important;transition:none!important}
+@keyframes megaIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hdr.mega-swap .has-menu.hold .mega .wrap{animation:none}}
