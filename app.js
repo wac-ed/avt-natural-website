@@ -98,7 +98,7 @@ function certMarquee(){return '<div class="marquee rv" aria-label="Certification
 var P={};
 P.home=function(){return d.getElementById('tpl-home').innerHTML+'';};
 
-P.solutions=function(){return hero({title:'Start with|your problem.',eyebrow:'Solutions <b>·</b> By industry and need',lede:'The same botanical can colour a seasoning, protect a broiler\'s gut or brighten a serum. Tell us where it has to work, and we work back to the plant.',img:'img/hills.jpg',crumbs:[['Solutions']],btns:btn('Talk to an Expert','contact','btn-mint')})+
+P.solutions=function(){return hero({title:'Natural solutions,|matched to your need.',eyebrow:'Solutions <b>·</b> By industry and need',lede:'Colour, heat, shelf life, gut health or skin care. We supply the botanical ingredient built for the job.',img:'img/hills.jpg',crumbs:[['Solutions']],btns:btn('Talk to an Expert','contact','btn-mint')})+
  band('white',head('01 <b>/</b> Industries','Built for industries that cannot compromise on consistency.','Each industry gets its own specification, documentation and application support.')+
   icards([{t:'Food and Beverage',p:'Spice extracts, natural colours, antioxidants and flavours for food makers, and tea as a functional ingredient for beverage brands.',img:'img/dish.jpg',href:'food-and-beverage'},
           {t:'Animal Health &amp; Nutrition',p:'Primyra phytogenic solutions and marigold pigments for poultry, swine and aquaculture.',img:'img/pig_yellow.jpg',href:'animal-health-nutrition'},
