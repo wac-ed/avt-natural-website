@@ -623,3 +623,7 @@ a.wcard,.wcard{color:inherit}
 .fb-cta .arr{transition:transform .35s var(--ease)}
 .fb-soon:hover .fb-cta .arr{transform:translateX(4px)}
 @media (prefers-reduced-motion:reduce){.fb-pill i{animation:none}}
+/* Product grids outside the catalogue: two rows, then View more */
+.pgrid.capped>.prod:nth-child(n+7){display:none}
+.pmore{display:flex;justify-content:center;margin-top:32px}
+.pmore-n{font:400 12px/1 var(--f-mono);letter-spacing:.04em;opacity:.6;margin-left:6px}

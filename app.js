@@ -87,7 +87,8 @@ function caseCard(id,i){var c=A.cases[id];return '<a class="pcard rv d-'+(i||0)+
 function proof(ids,eb,title){return band('white','<div class="head"><p class="eyebrow rv">'+(eb||'Proof')+'</p><h2 class="rv d-1 md">'+(title||'What the process makes possible.')+'</h2></div><div class="proof-grid">'+ids.map(caseCard).join('')+'</div>');}
 function prodCard(p,i){var f=A.families[p.fam];
   return '<a class="prod" style="animation-delay:'+Math.min(i,12)*40+'ms" href="#p.'+p.id+'"><span class="fam">'+(p.brand?p.brand+' · ':'')+f.name+'</span><h3>'+p.name+'</h3><span class="bot">'+p.bot+'</span><div class="key"><b>Spec</b><span>'+p.key+'</span></div><div class="meta"><span>'+p.fmt+'</span>'+(p.type==='Formulated'?'<span>Formulated</span>':'')+(p.org?'<span class="org">Organic</span>':'')+'</div><span class="go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>';}
-function prodList(filter,limit){var l=A.products.filter(filter);if(limit)l=l.slice(0,limit);return '<div class="pgrid">'+l.map(prodCard).join('')+'</div>';}
+function prodGrid(l){var more=l.length>6;return '<div class="pgrid'+(more?' capped':'')+'">'+l.map(prodCard).join('')+'</div>'+(more?'<div class="pmore"><button class="btn btn-secondary" type="button" data-pmore>View more <span class="pmore-n">'+(l.length-6)+' more</span></button></div>':'');}
+function prodList(filter,limit){var l=A.products.filter(filter);if(limit)l=l.slice(0,limit);return prodGrid(l);}
 function chips(arr){return '<div class="chips">'+arr.map(function(c){return '<span class="chip">'+c+'</span>';}).join('')+'</div>';}
 function tags(arr){return '<div class="tags">'+arr.map(function(t){return t[1]?'<a href="#'+t[1]+'">'+t[0]+'</a>':'<span>'+t[0]+'</span>';}).join('')+'</div>';}
 function table(head,rows){return '<div class="tscroll rv"><table class="tbl"><thead><tr>'+head.map(function(h){return '<th>'+h+'</th>';}).join('')+'</tr></thead><tbody>'+rows.map(function(r){return '<tr>'+r.map(function(c){return '<td>'+c+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';}
@@ -410,7 +411,7 @@ function initAcc(){app.querySelectorAll('.acc button').forEach(function(b){b.add
 
 function pressGroup(wrap,btn){wrap.querySelectorAll('.fopt').forEach(function(x){x.setAttribute('aria-pressed',String(x===btn));});}
 function initNeedGrid(tabId,gridId,base){var tabs=d.getElementById(tabId),grid=d.getElementById(gridId);
-  function draw(n){var l=A.products.filter(function(p){return base(p)&&(!n||p.needs.indexOf(n)>-1);});grid.innerHTML='<div class="pgrid">'+l.map(prodCard).join('')+'</div>';}
+  function draw(n){var l=A.products.filter(function(p){return base(p)&&(!n||p.needs.indexOf(n)>-1);});grid.innerHTML=prodGrid(l);}
   tabs.addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(tabs,b);draw(b.dataset.need);});draw('');}
 function initCaseTabs(){var t=d.getElementById('caseTabs'),g=d.getElementById('caseGrid');if(!t)return;t.addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(t,b);var v=b.dataset.ind;[].slice.call(g.children).forEach(function(r){r.hidden=!!v&&r.dataset.ind!==v;});});}
 function initIR(){var t=app.querySelector('[data-ir]').parentNode;t.addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(t,b);d.getElementById('irBody').textContent=b.textContent+': this section will be connected to AVT\'s investor feed.';});}
@@ -540,6 +541,7 @@ function openDrawer(kind,what){
 }
 function closeDrawer(){scrim.classList.remove('show');drawer.classList.remove('show');drawer.setAttribute('aria-hidden','true');}
 scrim.addEventListener('click',closeDrawer);d.getElementById('dclose').addEventListener('click',closeDrawer);
+d.addEventListener('click',function(e){var b=e.target.closest('[data-pmore]');if(!b)return;var w=b.closest('.pmore'),g=w&&w.previousElementSibling;if(g)g.classList.remove('capped');w.remove();});
 d.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDrawer();closeSearch();d.body.classList.remove('menu-open');}});
 
 try{d.getElementById('lg').innerHTML=d.querySelector('.hdr .logo g').innerHTML;}catch(e){}
