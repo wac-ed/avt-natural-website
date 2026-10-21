@@ -601,3 +601,6 @@ a.wcard,.wcard{color:inherit}
 .sr-list b{font:600 16px/1.2 var(--f-ui);color:var(--brand-900)}
 .sr-list span{grid-column:1;font-size:13.5px;color:var(--muted)}
 .sr-list .arr{grid-row:1/3;grid-column:2;color:var(--brand-600)}
+/* F&B: solvent-free spices highlight */
+.sf-band{background:linear-gradient(180deg,var(--mint-tint,#E6F7EF),#F4FBF7)}
+.sf-pill{display:inline-block;font:500 10px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;background:var(--brand-900);color:#fff;padding:5px 8px;border-radius:999px;margin-right:8px;vertical-align:1px}
