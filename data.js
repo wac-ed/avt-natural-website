@@ -11,13 +11,13 @@ AVT.families = {
     story:"Buyers expect to see the whole range in one place, so we consolidate essential oils across our own distillation and trusted sources, standardised to a marker compound and available as liquids or micro-encapsulated powders.",
     origin:"manufacturing",originText:"Steam distilled and standardised to a marker compound, batch after batch.",chips:["Oregano","Clove","Cinnamon","Pepper","Turmeric"]},
   extracts:{name:"Natural Extracts",slug:"natural-extracts",img:"img/teatasting.jpg",line:"Tea, coffee and botanical extracts, from instant tea to 99% natural caffeine.",
-    story:"We are the world's largest tea decaffeinator, which makes us one of the largest suppliers of natural tea caffeine. Around tea sit coffee extracts, nutraceutical-grade botanicals and the phytogenic blends behind our Primyra animal nutrition range.",
+    story:"We are the world's largest tea decaffeinator, which makes us one of the largest suppliers of natural tea caffeine. Around tea sit coffee extracts, nutraceutical-grade botanicals and the botanical blends behind our Primyra animal nutrition range.",
     origin:"beverage",originText:"Tea know-how carried forward from the A.V. Thomas Group's plantation heritage.",chips:["Instant tea","Decaf","Green tea","Green coffee","Caffeine"]}
 };
 /* collections cut across families: listed first in the catalogue */
 AVT.collections = {
   formulated:{name:"Formulated Products",kind:"Collection",img:"img/beadlets.jpg",line:"Ready-to-use blends built around a job: Primyra for animal nutrition and the NAX range for shelf life.",
-    story:"Some customers want an ingredient, others want a solution. Our formulated products combine several botanicals at a set dose, so they work out of the bag: Primyra phytogenics for gut health, performance and pigmentation, and NAX antioxidant blends for food shelf life.",
+    story:"Some customers want an ingredient, others want a solution. Our formulated products combine several botanicals at a set dose, so they work out of the bag: Primyra botanicals for gut health, performance and pigmentation, and NAX antioxidant blends for food shelf life.",
     origin:"research",originText:"Formulated and validated by our R&D and application teams.",chips:["Primyra","NAX","Beadlets","Ready to use"],
     test:function(p){return p.type==="Formulated";}},
   pigments:{name:"Pigments",kind:"Collection",img:"img/pig_yellow.jpg",line:"Natural marigold and paprika pigments for egg yolk and broiler skin colour, and the lutein behind them.",
