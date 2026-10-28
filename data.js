@@ -191,7 +191,7 @@ AVT.pages = [
   ["animal-health-nutrition","Animal Health & Nutrition","Industry","Primyra, pigments, gut health"],["personal-care","Personal Care","Industry","Upcycled natural actives"],
   ["products","Products","Catalogue","All ingredients"],["products.formulated","Formulated Products","Collection","Primyra and NAX blends"],["products.flavours","Flavour Solutions","Collection","Flavour beads and natural flavours"],["products.pigments","Pigments","Collection","Yellow and red pigments for yolk and skin"],["capabilities","Capabilities","Story","From seed to solution"],["agro","AVT Agro and Agro R&D","Capability","Seed science and contract farming"],
   ["research","R&D and Innovation","Capability","Full-spectrum extracts, Cochin lab"],["manufacturing","Manufacturing and Extraction","Capability","Continuous extraction, three plants"],
-  ["quality","Quality and Certifications","Capability","FSSC 22000, FAMI-QS, ISO"],["case-studies","Success Stories","Proof","What we made possible"],
+  ["quality","Quality and Certifications","Capability","FSSC 22000, FAMI-QS, ISO"],["case-studies","Customised Portfolio","Proof","What we made possible"],
   ["sustainability","Sustainability","Page","People, planet, product"],["community","Community","Page","CSR programmes"],["about","About AVT","Page","A.V. Thomas Group heritage"],
   ["careers","Careers","Page","Life at AVT"],["contact","Contact Us","Page","Talk to an expert"],["investors","Investor Relations","Page","Results, governance"]
 ];
