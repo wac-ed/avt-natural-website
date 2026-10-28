@@ -20,6 +20,10 @@ AVT.collections = {
     story:"Some customers want an ingredient, others want a solution. Our formulated products combine several botanicals at a set dose, so they work out of the bag: Primyra botanicals for gut health, performance and pigmentation, and NAX antioxidant blends for food shelf life.",
     origin:"research",originText:"Formulated and validated by our R&D and application teams.",chips:["Primyra","NAX","Beadlets","Ready to use"],
     test:function(p){return p.type==="Formulated";}},
+  flavours:{name:"Flavour Solutions",kind:"Collection",img:"img/soup.jpg",line:"Natural flavours from fresh and roasted spices: flavour beads, absolutes, infused oils, liquid flavours, seasoning blends and value-added extracts.",
+    story:"Our flavour range starts where our spice expertise does. Fresh and roasted spice flavours are carried as beads, absolutes, infused oils and liquid flavours, alongside ready seasoning blends and value-added extracts.",
+    origin:"research",originText:"Developed and matched in our application lab before it scales.",chips:["Flavour beads","Absolutes","Infused oils","Liquid flavours","Seasoning blends","Value-added extracts"],
+    test:function(p){return p.type==="Flavour";}},
   pigments:{name:"Pigments",kind:"Collection",img:"img/pig_yellow.jpg",line:"Natural marigold and paprika pigments for egg yolk and broiler skin colour, and the lutein behind them.",
     story:"Pigments are our biggest strength in animal nutrition. They start with marigold we breed and grow ourselves and paprika we know well, and end as standardised yellow and red pigments that hold up in real feed-mill conditions.",
     origin:"agro",originText:"Yellow pigments start with marigold bred from our own parent seeds.",chips:["Yellow","Red","Yolk colour","Skin colour"],
@@ -87,6 +91,27 @@ AVT.products = [];
   p("pomegranate-extract","extracts","Pomegranate Extract","Punica granatum","Polyphenols, min. 40%","Powder",["hhn"],{actives:["polyphenols"],apps:["Nutraceuticals"]});
   p("amla-extract","extracts","Amla Extract","Phyllanthus emblica","Polyphenols, min. 40%","Powder",["hhn"],{actives:["polyphenols"],apps:["Nutraceuticals"]});
   p("rosemary-extract","extracts","Rosemary Extract","Salvia rosmarinus","Natural antioxidant","Powder or liquid",["food"],{needs:["shelf life"],apps:["Meat","Frying oils","Snacks"]});
+  p("fresh-ginger-beads","spice","Fresh Ginger Beads","Zingiber officinale","Fresh ginger flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("ginger-oil-beads","oils","Ginger Oil Beads","Zingiber officinale","Ginger oil flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("turmeric-beads","spice","Turmeric Beads","Curcuma longa","Fresh turmeric flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("capsicum-beads","spice","Capsicum Beads","Capsicum annuum","Fresh capsicum flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("black-pepper-beads","spice","Black Pepper Beads","Piper nigrum","Fresh black pepper flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("green-chilli-beads","spice","Green Chilli Beads","Capsicum annuum","Fresh green chilli flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("lemongrass-oil-beads","oils","Lemongrass Oil Beads","Cymbopogon flexuosus","Lemongrass oil flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("cassia-beads","spice","Cassia Beads","Cinnamomum cassia","Fresh cassia flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("fresh-cumin-beads","spice","Fresh Cumin Beads","Cuminum cyminum","Fresh cumin flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("roasted-cumin-beads","spice","Roasted Cumin Beads","Cuminum cyminum","Roasted cumin flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("fresh-coriander-beads","spice","Fresh Coriander Beads","Coriandrum sativum","Fresh coriander flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("roasted-coriander-beads","spice","Roasted Coriander Beads","Coriandrum sativum","Roasted coriander flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("fennel-beads","spice","Fennel Beads","Foeniculum vulgare","Fresh fennel flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("celery-beads","spice","Celery Beads","Apium graveolens","Fresh celery flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("clove-beads","spice","Clove Beads","Syzygium aromaticum","Fresh clove flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("roasted-garlic-beads","spice","Roasted Garlic Beads","Allium sativum","Roasted garlic flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("fresh-garlic-beads","spice","Fresh Garlic Beads","Allium sativum","Fresh garlic flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("green-onion-beads","spice","Green Onion Beads","Allium fistulosum","Fresh green onion flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("roasted-onion-beads","spice","Roasted Onion Beads","Allium cepa","Roasted onion flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("fried-shallot-beads","spice","Fried Shallot Beads","Allium cepa var. aggregatum","Roasted shallot flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
+  p("cardamom-beads","spice","Cardamom Beads","Elettaria cardamomum","Fresh cardamom flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
   p("nax-001","extracts","NAX 001","Rosemary and green tea","Shelf life for meat and meat analogues","Powder",["food"],{type:"Formulated",needs:["shelf life"],apps:["Meat","Meat analogues"]});
   p("nax-002","extracts","NAX 002","Rosemary and green tea","Shelf life for frying oils and snacks","Liquid",["food"],{type:"Formulated",needs:["shelf life"],apps:["Frying oils","Snack bars","Snacks"]});
   p("nax-003","extracts","NAX 003","Rosemary and green tea","Shelf life for instant mixes and high-fat premixes","Powder",["food"],{type:"Formulated",needs:["shelf life"],apps:["Instant mixes","High-fat premixes"]});
@@ -153,9 +178,9 @@ AVT.cases = {
 AVT.pages = [
   ["home","Home","Page",""],["solutions","Solutions","Page","Industries and needs"],["food-and-beverage","Food and Beverage","Industry","Food Solutions and Beverage Solutions"],
   ["food-solutions","Food Solutions","Industry","Spice extracts for food and seasoning"],["beverage-solutions","Beverage Solutions","Industry","Tea as a functional ingredient"],
-  ["exotic-flavours","Exotic Flavours","Range","Roasted and fresh spice flavours, blends"],["antioxidants","Antioxidants","Range","Shelf life, rosemary, NAX 001 to 003"],["colours","Colours","Range","Natural colours, coming soon"],
+  ["flavour-solutions","Flavour Solutions","Range","Flavour beads, absolutes, infused oils, liquid flavours, blends, extracts"],["antioxidants","Antioxidants","Range","Shelf life, rosemary, NAX 001 to 003"],["colours","Colours","Range","Natural colours, coming soon"],
   ["animal-health-nutrition","Animal Health & Nutrition","Industry","Primyra, pigments, gut health"],["personal-care","Personal Care","Industry","Upcycled natural actives"],
-  ["products","Products","Catalogue","All ingredients"],["products.formulated","Formulated Products","Collection","Primyra and NAX blends"],["products.pigments","Pigments","Collection","Yellow and red pigments for yolk and skin"],["capabilities","Capabilities","Story","From seed to solution"],["agro","AVT Agro and Agro R&D","Capability","Seed science and contract farming"],
+  ["products","Products","Catalogue","All ingredients"],["products.formulated","Formulated Products","Collection","Primyra and NAX blends"],["products.flavours","Flavour Solutions","Collection","Flavour beads and natural flavours"],["products.pigments","Pigments","Collection","Yellow and red pigments for yolk and skin"],["capabilities","Capabilities","Story","From seed to solution"],["agro","AVT Agro and Agro R&D","Capability","Seed science and contract farming"],
   ["research","R&D and Innovation","Capability","Full-spectrum extracts, Cochin lab"],["manufacturing","Manufacturing and Extraction","Capability","Continuous extraction, three plants"],
   ["quality","Quality and Certifications","Capability","FSSC 22000, FAMI-QS, ISO"],["case-studies","Success Stories","Proof","What we made possible"],
   ["sustainability","Sustainability","Page","People, planet, product"],["community","Community","Page","CSR programmes"],["about","About AVT","Page","A.V. Thomas Group heritage"],
