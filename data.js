@@ -144,7 +144,7 @@ AVT.primyra = {
 AVT.cases = {
   "marigold-value-chain":{title:"The marigold value chain",tag:"Flagship · Agro",img:"img/marigold2.jpg",ind:"ahn",
     sum:"From seed research to deodorised extract, one accountable chain for consistent lutein.",
-    challenge:"Buyers of marigold-based lutein for feed pigmentation and food colour faced the same problem every season: flower quality and volume swung with weather and with whoever was selling. Active content per flower was unpredictable, and nobody could trace a batch back to a field.",
+    challenge:"Buyers of marigold-based lutein for feed pigmentation and food colour faced the same challenge every season: flower quality and volume swung with weather and with whoever was selling. Active content per flower was unpredictable, and nobody could trace a batch back to a field.",
     did:["Our seed scientists bred marigold from AVT's own parent seeds for more active per flower, more flower weight per acre, resilience and a plant shape that is easy to harvest. Each line is developed three to four years ahead of the season.","We contract farmers directly, with no agents. A field team of agronomists, extension officers and field assistants guides each farmer through the season with a package of practices.","Growing is spread across multiple agro-climatic zones, so one bad season in one region does not stop supply.","Flowers come from the farm gate to our own plant, where continuous extraction keeps heat contact low and deodorisation removes the flower odour for food colour use."],
     result:[["Customer","Consistent lutein quality season after season, traceable to the growing programme, in conventional, organic and deodorised variants."],["Farmer","A crop bred for their kg per acre, season-long guidance and a buyer who returns every year. Farmers come back because the economics work for them too."]],
     products:["marigold-oleoresin","organic-marigold-oleoresin","deodorised-marigold-extract","primyra-y60"],
@@ -153,7 +153,7 @@ AVT.cases = {
     model:"The same model can be replicated for other botanicals, and partners can own a value chain with AVT from the growing stage."},
   "colourless-capsicum":{title:"Colourless capsicum oleoresin",tag:"Innovation · Food",img:"img/capsicum.jpg",ind:"food",
     sum:"Full pungency with virtually no colour, for products where heat must stay invisible.",
-    challenge:"Capsicum oleoresin brings heat, but it also brings red. For clear seasoning oils, light-coloured sauces and topical balms, that colour was a problem, and buyers had to choose between pungency and appearance.",
+    challenge:"Capsicum oleoresin brings heat, but it also brings red. For clear seasoning oils, light-coloured sauces and topical balms, that colour was a challenge, and buyers had to choose between pungency and appearance.",
     did:["Our R&D team developed a process that keeps the capsaicinoids and removes the colour, independent of the raw material lot.","The oleoresin is also produced to contaminant limits that meet EU and Korean requirements."],
     result:[["Pungency","0.5 million to 1.5 million SHU"],["Colour","Under 5 colour units"],["Used in","Instant noodle seasoning oil sachets, clear sauces and topical balms"]],
     products:["colourless-capsicum","capsicum-eu","capsicum-oleoresin"],
