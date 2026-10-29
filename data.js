@@ -6,7 +6,7 @@ AVT.families = {
     origin:"agro",originText:"Bred from our own parent seeds and grown by about 25,000 contract farmers.",chips:["Lutein","Zeaxanthin","Deodorised","Organic"],proof:["marigold-value-chain"],proofTitle:"From seed to extract."},
   spice:{name:"Spice Oleoresins",slug:"spice-oleoresins",img:"img/chilli.jpg",line:"The full spice range, customised to the colour, heat and regulation of your market.",
     story:"We supply the complete spice portfolio, and the story here is customisation. We meet strict contaminant limits for the EU and Korea, isolate the active a function needs, and tailor colour, pungency and format to each customer and country.",
-    origin:"research",originText:"Customised in our Cochin lab: contaminant-free, colourless or deeper hue, by process.",chips:["Paprika","Capsicum","Turmeric","Pepper","Ginger"],proof:["colourless-capsicum","deep-hue-paprika"]},
+    origin:"research",originText:"Customised in our Cochin lab: contaminant-free, colourless or deeper hue, by process.",chips:["Paprika","Capsicum","Turmeric","Pepper","Ginger","Cardamom","Nutmeg and mace","Cumin","Cinnamon"],proof:["colourless-capsicum","deep-hue-paprika"]},
   oils:{name:"Essential Oils",slug:"essential-oils",img:"img/oils.jpg",line:"One consolidated portfolio of spice and herb oils, steam distilled and standardised.",
     story:"Buyers expect to see the whole range in one place, so we consolidate essential oils across our own distillation and trusted sources, standardised to a marker compound and available as liquids or micro-encapsulated powders.",
     origin:"manufacturing",originText:"Steam distilled and standardised to a marker compound, batch after batch.",chips:["Oregano","Clove","Cinnamon","Pepper","Turmeric"]},
@@ -69,6 +69,10 @@ AVT.products = [];
   p("aged-garlic-extract","extracts","Aged Garlic Extract","Allium sativum","Alliin, 0.5%","Powder",["hhn","food","bev"],{apps:["Nutraceuticals","Functional foods and beverages","Herbal products"],note:"Off-white to pale yellow, free-flowing powder. Water soluble."});
   p("fenugreek-oleoresin","spice","Fenugreek Oleoresin","Trigonella foenum-graecum","Saponin, min. 30%","Oleoresin",["food","ahn"],{actives:["saponin"],apps:["Seasonings","Feed"]});
   p("cardamom-oleoresin","spice","Cardamom Oleoresin","Elettaria cardamomum","Full aromatic profile","Oleoresin",["food","bev"],{apps:["Beverages","Bakery","Dairy"]});
+  p("nutmeg-oleoresin","spice","Nutmeg Oleoresin","Myristica fragrans","Specification on request","Oleoresin",["food"],{apps:["Seasonings","Bakery","Processed foods"]});
+  p("mace-oleoresin","spice","Mace Oleoresin","Myristica fragrans","Specification on request","Oleoresin",["food"],{apps:["Seasonings","Bakery","Processed foods"]});
+  p("cumin-oleoresin","spice","Cumin Oleoresin","Cuminum cyminum","Specification on request","Oleoresin",["food"],{apps:["Seasonings","Bakery","Processed foods"]});
+  p("cinnamon-cassia-oleoresin","spice","Cinnamon / Cassia Oleoresin","Cinnamomum cassia","Specification on request","Oleoresin",["food"],{apps:["Seasonings","Bakery","Processed foods"]});
   p("garlic-oleoresin","spice","Garlic Oleoresin","Allium sativum","Fresh and roasted profiles","Oleoresin",["food"],{apps:["Seasonings","Snacks"]});
   p("organic-chilli-oleoresin","spice","Organic Chilli Oleoresin","Capsicum annuum","From certified organic chilli","Oleoresin",["food"],{org:true,actives:["capsaicin"],needs:["heat"],apps:["Organic seasonings"]});
   p("primyra-r10","spice","Primyra R10","Capsicum annuum","Paprika-based red pigment, carotenoids min. 10 g/kg","Powder",["ahn"],{type:"Formulated",brand:"Primyra",needs:["pigmentation"],apps:["Egg yolk colour","Broiler colour"],pigment:true});
@@ -82,6 +86,12 @@ AVT.products = [];
   p("aniseed-oil","oils","Aniseed Oil","Pimpinella anisum","Anethole, min. 95%","Liquid",["food","ahn"],{actives:["anethole"],apps:["Beverages","Feed palatability"]});
   p("turmeric-oil","oils","Turmeric Oil","Curcuma longa","Turmerone, min. 40%","Liquid",["pc","food"],{actives:["turmerone"],needs:["anti-acne","dandruff"],apps:["Skin care","Hair care"]});
   p("black-pepper-oil","oils","Black Pepper Oil","Piper nigrum","Steam distilled","Liquid",["food","pc"],{apps:["Seasonings","Fragrance"]});
+  p("clove-bud-oil","oils","Clove Bud Oil","Syzygium aromaticum","Specification on request","Liquid",["food","bev"],{apps:["Flavours","Seasonings","Beverages"]});
+  p("ginger-oil","oils","Ginger Oil","Zingiber officinale","Specification on request","Liquid",["food","bev"],{apps:["Flavours","Seasonings","Beverages"]});
+  p("nutmeg-oil","oils","Nutmeg Oil","Myristica fragrans","Specification on request","Liquid",["food","bev"],{apps:["Flavours","Seasonings","Beverages"]});
+  p("mace-oil","oils","Mace Oil","Myristica fragrans","Specification on request","Liquid",["food","bev"],{apps:["Flavours","Seasonings","Beverages"]});
+  p("lemongrass-oil","oils","Lemongrass Oil","Cymbopogon flexuosus","Specification on request","Liquid",["food","bev"],{apps:["Flavours","Seasonings","Beverages"]});
+  p("cardamom-oil","oils","Cardamom Oil","Elettaria cardamomum","Specification on request","Liquid",["food","bev"],{apps:["Flavours","Seasonings","Beverages"]});
   p("ajwain-oil","oils","AVT Ajwain Oil","Trachyspermum ammi","INCI: Trachyspermum ammi Oil","Liquid",["pc"],{needs:["anti-acne","dandruff"],apps:["Anti-acne","Anti-dandruff"]});
   p("black-cumin-oil","oils","AVT Black Cumin Total Extract Oil","Nigella sativa","INCI: Nigella sativa Seed Oil","Liquid",["pc"],{needs:["moisturisation","anti-acne","dandruff"],apps:["Moisturisation","Anti-dandruff"]});
   p("microencapsulated-clove","oils","Micro-encapsulated Clove Oil","Syzygium aromaticum","Volatile oil min. 18%, eugenol min. 10%","Micro-encapsulated",["ahn","food"],{actives:["eugenol"],apps:["Feed premixes"]});
@@ -100,6 +110,11 @@ AVT.products = [];
   p("pomegranate-extract","extracts","Pomegranate Extract","Punica granatum","Polyphenols, min. 40%","Powder",["hhn"],{actives:["polyphenols"],apps:["Nutraceuticals"]});
   p("amla-extract","extracts","Amla Extract","Phyllanthus emblica","Polyphenols, min. 40%","Powder",["hhn"],{actives:["polyphenols"],apps:["Nutraceuticals"]});
   p("rosemary-extract","extracts","Rosemary Extract","Salvia rosmarinus","Natural antioxidant","Powder or liquid",["food"],{needs:["shelf life"],apps:["Meat","Frying oils","Snacks"]});
+  p("flavour-absolutes","spice","Absolutes","Spices and herbs","Range available, list on request","Liquid" ,["food","bev"],{type:"Flavour",apps:["Seasonings","Snacks","Beverages"]});
+  p("flavour-infused-oils","spice","Infused Oils","Spices and herbs","Range available, list on request","Liquid" ,["food","bev"],{type:"Flavour",apps:["Seasonings","Snacks","Beverages"]});
+  p("flavour-liquid-flavours","spice","Liquid Flavours","Spices and herbs","Range available, list on request","Liquid" ,["food","bev"],{type:"Flavour",apps:["Seasonings","Snacks","Beverages"]});
+  p("flavour-seasoning-blends","spice","Seasoning Blends","Spices and herbs","Range available, list on request","Liquid" ,["food","bev"],{type:"Flavour",apps:["Seasonings","Snacks","Beverages"]});
+  p("flavour-value-added-extracts","spice","Value-Added Extracts","Spices and herbs","Range available, list on request","Liquid" ,["food","bev"],{type:"Flavour",apps:["Seasonings","Snacks","Beverages"]});
   p("fresh-ginger-beads","spice","Fresh Ginger Beads","Zingiber officinale","Fresh ginger flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
   p("ginger-oil-beads","oils","Ginger Oil Beads","Zingiber officinale","Ginger oil flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
   p("turmeric-beads","spice","Turmeric Beads","Curcuma longa","Fresh turmeric flavour in bead form","Beads",["food"],{type:"Flavour",apps:["Seasonings","Snacks","Ready meals"]});
