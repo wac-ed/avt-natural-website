@@ -151,6 +151,22 @@ AVT.primyra = {
   "primyra-layer":{pos:"Layer performance support for egg production, egg quality and flock uniformity.",comp:"Blend of ginger, rosemary, fenugreek and cinnamon extracts and oils in a fat carrier.",moa:"Relieves stress, protects the gut from inflammation and supports ovarian health in laying hens.",inc:"Layers and breeders 100 ppm",ben:["Increases egg production","Improves egg quality","Maintains flock uniformity","Relieves stress"],fit:["Layers","Breeders"]},
   "primyra-redox":{pos:"For use where oxidative stress and liver pressure affect productivity.",comp:"Blend of ginger, rosemary and bergamot extract in a fat carrier.",moa:"Supports liver health and helps reduce oxidative stress and associated performance losses.",inc:"Poultry 100 ppm · Swine 100 ppm · Fish and shrimp 100 ppm",ben:["Improves liver health","Reduces oxidative stress","Improves feed efficiency","Reduces mortality"],fit:["Poultry","Swine","Aquaculture"]}
 };
+/* filter facets: derived once from the catalogue so every filter uses one fixed vocabulary (matches the client product sheet) */
+AVT.plantOf = {"Capsicum annuum":"Paprika","Camellia sinensis":"Tea","Tagetes erecta":"Marigold","Allium sativum":"Garlic","Zingiber officinale":"Ginger","Curcuma longa":"Turmeric","Piper nigrum":"Pepper","Elettaria cardamomum":"Cardamom","Myristica fragrans":"Nutmeg and mace","Syzygium aromaticum":"Clove","Capsicum frutescens":"Chilli","Cuminum cyminum":"Cumin","Allium cepa":"Onion","Allium cepa var. aggregatum":"Onion","Allium fistulosum":"Onion","Trigonella foenum-graecum":"Fenugreek","Cinnamomum cassia":"Cinnamon","Cinnamomum verum":"Cinnamon","Cinnamomum":"Cinnamon","Origanum vulgare":"Oregano","Cymbopogon flexuosus":"Lemongrass","Coffea robusta":"Coffee","Coffea":"Coffee","Coriandrum sativum":"Coriander","Mentha piperita":"Peppermint","Pimpinella anisum":"Aniseed","Trachyspermum ammi":"Ajwain","Nigella sativa":"Black cumin","Punica granatum":"Pomegranate","Phyllanthus emblica":"Amla","Salvia rosmarinus":"Rosemary","Foeniculum vulgare":"Fennel","Apium graveolens":"Celery","Withania somnifera":"Ashwagandha"};
+AVT.needGroups = [
+  ["Food and beverage",["natural colour","heat","heat without colour","flavour","shelf life","compliance","decaffeination"]],
+  ["Animal health",["pigmentation","growth and performance","gut health","layer performance","liver health"]],
+  ["Personal care",["even skin tone","moisturisation","anti-ageing","sebum control","anti-acne","dandruff","hair fall"]]
+];
+AVT.needLabel = {"compliance":"Meets EU and Korea limits"};
+AVT.products.forEach(function(p){
+  p.plant = p.plant || (/chilli/.test(p.id)||p.id==="capsicum-beads" ? "Chilli" : AVT.plantOf[p.bot] || (/,| and /.test(p.bot) ? "Blend of plants" : "Other"));
+  if(p.type==="Flavour"&&p.needs.indexOf("flavour")<0)p.needs.push("flavour");
+  var pr=AVT.primyra[p.id],fit=(pr?pr.fit:p.pigment?["Poultry"]:[]).join(" ").toLowerCase();
+  p.species = p.species || [["poultry",/broiler|layer|breeder|poultry/],["swine",/swine/],["aqua",/aqua|fish|shrimp/]].filter(function(s){return s[1].test(fit);}).map(function(s){return s[0];});
+  p.certs = p.certs || []; /* kosher, halal, fssc, famiqs, cosmos: filled from the client product sheet */
+  p.solventFree = !!p.solventFree;
+});
 AVT.cases = {
   "marigold-value-chain":{title:"The marigold value chain",tag:"Flagship · Agro",img:"img/marigold2.jpg",ind:"ahn",
     sum:"From seed research to deodorised extract, one accountable chain for consistent lutein.",
