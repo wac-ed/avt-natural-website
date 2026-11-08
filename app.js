@@ -193,13 +193,8 @@ P.catOrigin=function(fam){var G=fam?(A.collections[fam]||A.families[fam]):A.allP
 P.catProof=function(fam){var G=fam?(A.collections[fam]||A.families[fam]):A.allProducts;return G.proof?proof(G.proof,'Related proof',G.proofTitle):'';};
 P.products=function(fam){var F=fam?(A.collections[fam]||A.families[fam]):null,G=F||A.allProducts;
  var tabs='<div class="ftabs" role="group" aria-label="Ingredient family"><button class="fopt" data-fam="" aria-pressed="'+(!fam)+'">All products</button>'+Object.keys(A.collections).concat(Object.keys(A.families)).map(function(k){var g=A.collections[k]||A.families[k];return '<button class="fopt'+(A.collections[k]?' coll':'')+'" data-fam="'+k+'" aria-pressed="'+(fam===k)+'">'+g.name+'</button>';}).join('')+'</div>';
- var fg=function(t,key,opts){return '<div class="fgroup"><h4>'+t+'</h4><div class="fopts">'+opts.map(function(o){return '<button class="fopt" data-k="'+key+'" data-v="'+o[0]+'" aria-pressed="false">'+o[1]+'</button>';}).join('')+'</div></div>';};
- var filters='<aside class="filters" aria-label="Filters"><form class="search" id="catSearch" role="search" style="padding-left:18px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><label class="sr" for="cq">Search the catalogue</label><input id="cq" placeholder="Name, active or botanical" autocomplete="off"></form>'+
-  fg('Industry','ind',[['food','Food'],['bev','Beverage'],['ahn','Animal health'],['pc','Personal care'],['hhn','Human health']])+
-  fg('Format','fmt',[['Oleoresin','Oleoresin'],['Powder','Powder'],['Liquid','Liquid'],['Beadlet','Beadlet'],['Micro-encapsulated','Micro-encapsulated']])+
-  fg('Type','type',[['Ingredient','Ingredient'],['Formulated','Formulated'],['Flavour','Flavour solutions']])+
-  fg('Certification','org',[['1','Organic']])+'<button class="link" id="clearF" type="button">Clear filters</button></aside>';
- return '<div id="catTop" class="cat-top-swap">'+P.catTop(fam)+'</div>'+band('cream',tabs+'<div class="cat-layout">'+filters+'<div><div class="cat-top"><span class="count" id="count"></span></div><div class="pgrid" id="pgrid"></div><div class="lm-wrap" id="lmWrap"><span class="lm-count" id="lmCount"></span><button class="btn btn-secondary" id="loadMore" type="button">Load more</button></div></div></div>')+
+ var filters='<aside class="filters" id="filters" aria-label="Filters"><div class="f-head"><h3>Filters</h3><button class="f-x" id="fClose" type="button" aria-label="Close filters"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div><form class="search" id="catSearch" role="search" style="padding-left:18px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><label class="sr" for="cq">Search the catalogue</label><input id="cq" placeholder="Name, plant or active" autocomplete="off"></form><div class="fgroups" id="fgroups"></div><div class="f-foot"><button class="link" id="clearF" type="button">Clear all</button><button class="btn btn-primary" id="fApply" type="button">Show results</button></div></aside><div class="f-scrim" id="fScrim"></div>';
+ return '<div id="catTop" class="cat-top-swap">'+P.catTop(fam)+'</div>'+band('cream',tabs+'<div class="cat-layout">'+filters+'<div><div class="cat-top"><span class="count" id="count" aria-live="polite"></span><button class="ftoggle" id="fToggle" type="button" aria-controls="filters" aria-expanded="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>Filters<span class="fn" id="fN"></span></button></div><div class="fchips" id="fChips"></div><div class="pgrid" id="pgrid"></div><div class="lm-wrap" id="lmWrap"><span class="lm-count" id="lmCount"></span><button class="btn btn-secondary" id="loadMore" type="button">Load more</button></div></div></div>')+
   '<div id="catProof" class="cat-top-swap">'+P.catProof(fam)+'</div>'+
   band('white tight','<div class="split"><div class="stack"><p class="eyebrow rv">Custom solutions</p><h2 class="rv d-1 sm">Can\'t find it? We match and develop.</h2></div><div class="stack"><p class="body rv">Send a current ingredient or a target profile. We match it from our range, or develop it with your R&amp;D team from bench sample to commercial batch.</p><div class="btns rv">'+btn('Talk to an Expert','contact')+'</div></div></div>')+closer();
 };
@@ -426,15 +421,59 @@ function initNeedGrid(tabId,gridId,base){var tabs=d.getElementById(tabId),grid=d
 function initCaseTabs(){var t=d.getElementById('caseTabs'),g=d.getElementById('caseGrid');if(!t)return;t.addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(t,b);var v=b.dataset.ind;[].slice.call(g.children).forEach(function(r){r.hidden=!!v&&r.dataset.ind!==v;});});}
 function initIR(){var t=app.querySelector('[data-ir]').parentNode;t.addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(t,b);d.getElementById('irBody').textContent=b.textContent+': this section will be connected to AVT\'s investor feed.';});}
 
-function matchQ(p,q){if(!q)return true;q=q.toLowerCase().trim();var s=(p.name+' '+p.bot+' '+p.key+' '+p.actives.join(' ')+' '+p.needs.join(' ')+' '+p.apps.join(' ')+' '+A.families[p.fam].name).toLowerCase();if(s.indexOf(q)>-1)return true;var syn=A.syn[q]||Object.keys(A.syn).filter(function(k){return q.indexOf(k)>-1;}).map(function(k){return A.syn[k];})[0];if(syn){if(syn===p.fam||syn===p.id)return true;if(s.indexOf(syn.replace(/-/g,' '))>-1)return true;}return q.split(/\s+/).every(function(w){return s.indexOf(w)>-1;});}
+function matchQ(p,q){if(!q)return true;q=q.toLowerCase().trim();var s=(p.name+' '+p.bot+' '+(p.plant||'')+' '+p.key+' '+p.actives.join(' ')+' '+p.needs.join(' ')+' '+p.apps.join(' ')+' '+A.families[p.fam].name).toLowerCase();if(s.indexOf(q)>-1)return true;var syn=A.syn[q]||Object.keys(A.syn).filter(function(k){return q.indexOf(k)>-1;}).map(function(k){return A.syn[k];})[0];if(syn){if(syn===p.fam||syn===p.id)return true;if(s.indexOf(syn.replace(/-/g,' '))>-1)return true;}return q.split(/\s+/).every(function(w){return s.indexOf(w)>-1;});}
+/* catalogue facets: one fixed vocabulary per filter, matching the client product sheet */
+function cap1(x){return x.charAt(0).toUpperCase()+x.slice(1);}
+var FACETS=[
+  {k:'ind',t:'Industry',of:function(p){return p.ind;},label:function(v){return {food:'Food',bev:'Beverage',ahn:'Animal health',pc:'Personal care',hhn:'Human health'}[v];},order:['food','bev','ahn','pc','hhn']},
+  {k:'need',t:'Need',of:function(p){return p.needs;},label:function(v){return A.needLabel[v]||cap1(v);},order:A.needGroups.reduce(function(a,g){return a.concat(g[1]);},[]),groups:A.needGroups},
+  {k:'plant',t:'Plant',of:function(p){return [p.plant];},label:function(v){return v;},sortBy:'label'},
+  {k:'active',t:'Active',of:function(p){return p.actives;},label:function(v){return v==='egcg'?'EGCG':cap1(v);},sortBy:'label'},
+  {k:'fmt',t:'Form',of:function(p){return [p.fmt];},label:function(v){return v;},order:['Oleoresin','Powder','Liquid','Micro-encapsulated','Beads','Beadlet','Granules','Powder or liquid']},
+  {k:'type',t:'Product type',of:function(p){return [p.type];},label:function(v){return {Ingredient:'Single ingredient',Formulated:'Formulated blend',Flavour:'Flavour'}[v]||v;},order:['Ingredient','Formulated','Flavour']},
+  {k:'species',t:'Species',of:function(p){return p.species||[];},label:function(v){return {poultry:'Poultry',swine:'Swine',aqua:'Aquaculture'}[v];},order:['poultry','swine','aqua']},
+  {k:'cert',t:'Certification',of:function(p){var c=(p.certs||[]).slice();if(p.org)c.unshift('organic');if(p.solventFree)c.push('solvent');return c;},label:function(v){return {organic:'Organic',solvent:'Solvent-free',kosher:'Kosher',halal:'Halal',fssc:'FSSC 22000',famiqs:'FAMI-QS',cosmos:'COSMOS / ECOCERT'}[v]||v;},order:['organic','solvent','kosher','halal','fssc','famiqs','cosmos']}
+];
+var FSHOW=6;
 function initCatalogue(fam){
-  var st={fam:fam,ind:[],fmt:[],type:[],org:[],q:''};
-  var grid=d.getElementById('pgrid'),cnt=d.getElementById('count');
+  var st={fam:fam,q:'',open:{}};FACETS.forEach(function(f){st[f.k]=[];});
+  var grid=d.getElementById('pgrid'),cnt=d.getElementById('count'),box=d.getElementById('fgroups'),chipsEl=d.getElementById('fChips');
   var lm=d.getElementById('loadMore'),lmc=d.getElementById('lmCount'),lmw=d.getElementById('lmWrap');
+  var aside=d.getElementById('filters'),tog=d.getElementById('fToggle'),scrim=d.getElementById('fScrim'),fN=d.getElementById('fN'),apply=d.getElementById('fApply');
   lm.addEventListener('click',function(){draw(true);});
+  function inScope(p){return !st.fam||(A.collections[st.fam]?A.collections[st.fam].test(p):p.fam===st.fam);}
+  function passes(p,skip){return inScope(p)&&matchQ(p,st.q)&&FACETS.every(function(f){if(f.k===skip||!st[f.k].length)return true;var vs=f.of(p);return st[f.k].some(function(v){return vs.indexOf(v)>-1;});});}
+  function nSel(){return FACETS.reduce(function(n,f){return n+st[f.k].length;},0);}
+  function opt(f,v,n){var on=st[f.k].indexOf(v)>-1;return '<button class="fopt" type="button" data-k="'+f.k+'" data-v="'+v+'" aria-pressed="'+on+'"'+(!n&&!on?' disabled':'')+'>'+f.label(v)+'<span class="fc">'+n+'</span></button>';}
+  function renderFacets(){
+    box.innerHTML=FACETS.map(function(f){
+      var cnts={};A.products.forEach(function(p){if(!passes(p,f.k))return;f.of(p).forEach(function(v){cnts[v]=(cnts[v]||0)+1;});});
+      var scope={};A.products.forEach(function(p){if(inScope(p))f.of(p).forEach(function(v){scope[v]=1;});});
+      st[f.k].forEach(function(v){scope[v]=1;});
+      var vals=Object.keys(scope);if(f.k==='cert'&&vals.indexOf('organic')<0)vals.unshift('organic');
+      if(!vals.length)return '';
+      vals.sort(f.sortBy==='label'?function(a,b){return f.label(a).localeCompare(f.label(b));}:function(a,b){return f.order.indexOf(a)-f.order.indexOf(b);});
+      var sel=st[f.k].length,body;
+      if(f.groups&&vals.length>FSHOW){
+        body=f.groups.map(function(g){var gv=vals.filter(function(v){return g[1].indexOf(v)>-1;});return gv.length?'<p class="fsub">'+g[0]+'</p><div class="fopts">'+gv.map(function(v){return opt(f,v,cnts[v]||0);}).join('')+'</div>':'';}).join('');
+        var rest=vals.filter(function(v){return !f.groups.some(function(g){return g[1].indexOf(v)>-1;});});
+        if(rest.length)body+='<div class="fopts">'+rest.map(function(v){return opt(f,v,cnts[v]||0);}).join('')+'</div>';
+      }else{
+        var long=vals.length>FSHOW&&!st.open[f.k],show=long?vals.filter(function(v,i){return i<FSHOW||st[f.k].indexOf(v)>-1;}):vals;
+        body='<div class="fopts">'+show.map(function(v){return opt(f,v,cnts[v]||0);}).join('')+'</div>'+(vals.length>FSHOW?'<button class="fmore" type="button" data-more="'+f.k+'">'+(st.open[f.k]?'Show fewer':'Show all '+vals.length)+'</button>':'');
+      }
+      return '<div class="fgroup"><h4>'+f.t+(sel?'<span class="fsel">'+sel+'</span>':'')+'</h4>'+body+'</div>';
+    }).join('');
+  }
+  function renderChips(){
+    var html=FACETS.map(function(f){return st[f.k].map(function(v){return '<button class="fchip" type="button" data-k="'+f.k+'" data-v="'+v+'" aria-label="Remove '+f.label(v)+'">'+f.label(v)+'<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>';}).join('');}).join('');
+    chipsEl.innerHTML=html?html+'<button class="link fclear" type="button" data-clear>Clear all</button>':'';
+    var n=nSel();fN.textContent=n?n:'';
+  }
   function draw(more){
-    var l=A.products.filter(function(p){return (!st.fam||(A.collections[st.fam]?A.collections[st.fam].test(p):p.fam===st.fam))&&(!st.ind.length||st.ind.some(function(i){return p.ind.indexOf(i)>-1;}))&&(!st.fmt.length||st.fmt.some(function(f){return p.fmt.indexOf(f)>-1;}))&&(!st.type.length||st.type.indexOf(p.type)>-1)&&(!st.org.length||p.org)&&matchQ(p,st.q);});
-    cnt.textContent=l.length+' ingredient'+(l.length===1?'':'s');
+    var l=A.products.filter(function(p){return passes(p);});
+    cnt.textContent=l.length+' ingredient'+(l.length===1?'':'s');apply.textContent='Show '+l.length+' result'+(l.length===1?'':'s');
+    if(!more){renderFacets();renderChips();}
     /* four rows at a time, whatever the column count */
     var cols=(getComputedStyle(grid).gridTemplateColumns||'x').split(' ').length,step=cols*4,prev=more?st.shown:0;
     st.shown=more?st.shown+step:step;var vis=l.slice(0,st.shown);
@@ -442,13 +481,24 @@ function initCatalogue(fam){
     if(more){grid.insertAdjacentHTML('beforeend',vis.slice(prev).map(function(p,i){return prodCard(p,i);}).join(''));return;}
     grid.innerHTML=l.length?vis.map(prodCard).join(''):'<div class="empty" style="grid-column:1/-1"><h3>No direct match.</h3><p>We may still make it, or develop it with you.</p>'+btn('Talk to an Expert','contact')+'</div>';
   }
+  function toggle(k,v){var arr=st[k],i=arr.indexOf(v);if(i>-1)arr.splice(i,1);else arr.push(v);draw();}
+  function clearAll(){FACETS.forEach(function(f){st[f.k]=[];});st.q='';d.getElementById('cq').value='';draw();}
   app.querySelector('.ftabs').addEventListener('click',function(e){var b=e.target.closest('.fopt');if(!b)return;pressGroup(b.parentNode,b);st.fam=b.dataset.fam;draw();swapTop(st.fam);});
   function swapTop(f){var top=d.getElementById('catOrigin'),pf=d.getElementById('catProof');try{history.replaceState(null,'','#products'+(f?'.'+f:''));}catch(x){}
     var G=f?(A.collections[f]||A.families[f]):null;d.title=(G?G.name:'All products')+' · AVT Natural';
     var put=function(){top.innerHTML=P.catOrigin(f);pf.innerHTML=P.catProof(f);top.classList.remove('out');pf.classList.remove('out');onScroll();};
     if(reduce){put();return;}top.classList.add('out');pf.classList.add('out');clearTimeout(top._t);top._t=setTimeout(put,450);}
-  app.querySelector('.filters').addEventListener('click',function(e){var b=e.target.closest('.fopt[data-k]');if(!b)return;var k=b.dataset.k,v=b.dataset.v,arr=st[k],i=arr.indexOf(v);if(i>-1)arr.splice(i,1);else arr.push(v);b.setAttribute('aria-pressed',String(i<0));draw();});
-  d.getElementById('clearF').addEventListener('click',function(){['ind','fmt','type','org'].forEach(function(k){st[k]=[];});st.q='';d.getElementById('cq').value='';app.querySelectorAll('.filters .fopt').forEach(function(b){b.setAttribute('aria-pressed','false');});draw();});
+  box.addEventListener('click',function(e){var m=e.target.closest('[data-more]');if(m){st.open[m.dataset.more]=!st.open[m.dataset.more];renderFacets();return;}var b=e.target.closest('.fopt[data-k]');if(b&&!b.disabled)toggle(b.dataset.k,b.dataset.v);});
+  chipsEl.addEventListener('click',function(e){if(e.target.closest('[data-clear]')){clearAll();return;}var b=e.target.closest('.fchip');if(b)toggle(b.dataset.k,b.dataset.v);});
+  d.getElementById('clearF').addEventListener('click',clearAll);
+  /* small screens: the panel is a sheet */
+  var home=aside.parentNode,mark=d.createComment('filters');home.insertBefore(mark,aside);
+  function sheet(open){if(open){d.body.appendChild(scrim);d.body.appendChild(aside);aside.offsetHeight;}else{setTimeout(function(){if(!aside.classList.contains('open')){home.insertBefore(aside,mark);home.insertBefore(scrim,mark);}},reduce?0:360);}aside.classList.toggle('open',open);scrim.classList.toggle('show',open);tog.setAttribute('aria-expanded',String(open));d.body.classList.toggle('f-lock',open);if(open)setTimeout(function(){d.getElementById('fClose').focus();},50);else tog.focus();}
+  tog.addEventListener('click',function(){sheet(true);});
+  d.getElementById('fClose').addEventListener('click',function(){sheet(false);});
+  apply.addEventListener('click',function(){sheet(false);});
+  scrim.addEventListener('click',function(){sheet(false);});
+  aside.addEventListener('keydown',function(e){if(e.key==='Escape'&&aside.classList.contains('open'))sheet(false);});
   var cq=d.getElementById('cq');cq.addEventListener('input',function(){st.q=cq.value;draw();});
   d.getElementById('catSearch').addEventListener('submit',function(e){e.preventDefault();});
   try{var pre=sessionStorage.getItem('avt-q');if(pre){sessionStorage.removeItem('avt-q');cq.value=pre;st.q=pre;}}catch(e){}
